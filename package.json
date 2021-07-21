@@ -9,6 +9,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
+    "simple-git": "^2.41.1",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
@@ -16,8 +17,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "./node_modules/.bin/eslint"
-
+    "lint": "./node_modules/.bin/eslint",
+    "deploy": "node ./scripts/deploy.js"
+  },
+  "config": {
+    "branch": "chore/deploy-to-heroku"
   },
   "eslintConfig": {
     "extends": [
