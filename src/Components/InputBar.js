@@ -5,7 +5,7 @@ import { Form, Row, Button } from 'react-bootstrap';
  */
 function InputBar() {
   return (
-    <Row xs={1} md={1} className="justify-content-center m-auto">
+    <Row className="justify-content-center m-auto">
       <Form className="d-flex flex-row align-items-center">
         <Form.Label className="my-0 fw-bold">Countdown:</Form.Label>
         <Form.Control className="mx-2 rounded-0 border-2 border-secondary" type="input" placeholder="(Min)" />
