@@ -1,6 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 
+/** function responsible for generating the whole app
+ * @returns {Node} displaying the UI
+ */
 function App() {
   return (
     <div className="App">
