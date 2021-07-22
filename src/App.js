@@ -4,21 +4,31 @@ import { Col, Row } from 'react-bootstrap';
 import InputBar from './Components/InputBar';
 import SpeedBar from './Components/SpeedBar';
 import Clock from './Components/Clock';
+import PausePlayButton from './Components/PausePlayButton';
 
 /** This function renders the entire app
  * @returns {Node} containing the app
  */
 function App() {
   return (
-    <Col xs={12} md={6} className="m-auto">
-      <Row xl={2}>
-        <InputBar />
+    <Col xs={11} md={6} className="m-auto my-4 my-xl-5">
+      <Row>
+        <Col xs={12} md={10} className="m-auto ms-md-0">
+          <InputBar />
+        </Col>
       </Row>
       <Row>
-        <Clock />
+        <Col xs={12} md={10}>
+          <Clock />
+        </Col>
+        <Col xs={2} md={2} className="d-flex m-auto justify-content-center p-3 p-md-2 p-xl-3">
+          <PausePlayButton />
+        </Col>
       </Row>
       <Row>
-        <SpeedBar />
+        <Col xs={12} md={10}>
+          <SpeedBar />
+        </Col>
       </Row>
     </Col>
   );
