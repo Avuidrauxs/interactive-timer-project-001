@@ -5,6 +5,7 @@ import InputBar from './Components/InputBar';
 import SpeedBar from './Components/SpeedBar';
 import Clock from './Components/Clock';
 import PausePlayButton from './Components/PausePlayButton';
+import ClockComment from './Components/ClockComment';
 
 /** This function renders the entire app
  * @returns {Node} containing the app
@@ -15,6 +16,11 @@ function App() {
       <Row>
         <Col xs={12} md={10} className="m-auto ms-md-0">
           <InputBar />
+        </Col>
+      </Row>
+      <Row className="mt-4">
+        <Col xs={12} md={10}>
+          <ClockComment />
         </Col>
       </Row>
       <Row>
