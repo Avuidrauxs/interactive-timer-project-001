@@ -20,7 +20,7 @@ function App() {
       </Row>
       <Row className="mt-4">
         <Col xs={12} md={10}>
-          <ClockComment />
+          <ClockComment text="More than halfway there!"/>
         </Col>
       </Row>
       <Row>
