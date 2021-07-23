@@ -6,7 +6,7 @@ import { Row } from 'react-bootstrap';
 function ClockComment() {
   return (
     <Row xs={1} className="justify-content-center m-auto">
-      <p className="fs-5 fst-italic text-center">More than halfway there!</p>
+      <p className="fs-5 fst-italic text-center">{props.text}</p>
     </Row>
   );
 }
