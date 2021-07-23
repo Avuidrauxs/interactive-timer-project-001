@@ -22,7 +22,6 @@
     "lint": "./node_modules/.bin/eslint .",
     "deploy": "node ./scripts/deploy.js"
   },
-  },
   "eslintConfig": {
     "extends": [
       "react-app",
