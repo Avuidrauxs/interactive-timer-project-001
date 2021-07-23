@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default */
 const reportWebVitals = (onPerfEntry) => {
   if (onPerfEntry && onPerfEntry instanceof Function) {
     import('web-vitals').then(({
