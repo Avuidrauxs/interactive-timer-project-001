@@ -1,7 +1,7 @@
 import { Row } from 'react-bootstrap';
 
 /** function generating the text to be displayed above the clock
- * @param {props}
+ * @param {string} props is a text to be displayed
  * @returns {Node} representing component
  */
 function ClockComment(props) {
