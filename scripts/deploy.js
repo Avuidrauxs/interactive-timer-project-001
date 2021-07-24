@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const simpleGit = require('simple-git');
 
 const git = simpleGit();
