@@ -37,6 +37,21 @@ function InputBar() {
       setShowWarning(true);
     }
   }
+  /** function handling the live input. It will set showWarning to false whenever input changes to ''
+   * and block user from inputting anything else than numbers
+   * @returns {null}.
+   * @param {string} userInput is a value that user wants to set in the input field.
+   */
+  function handleInput(userInput) {
+    const re = /\D/;
+    if (re.test(userInput)) {
+      return;
+    }
+    if (userInput === '') {
+      setShowWarning(false);
+    }
+    setInput(userInput);
+  }
   return (
     <>
       <Row xs={1} className="justify-content-center m-auto">
@@ -45,9 +60,9 @@ function InputBar() {
           <Form.Control
             className="mx-2 rounded-0 border-2 border-secondary"
             type="input"
-            placeholder="(Min)"
+            placeholder="0-1380"
             value={input}
-            onChange={(e) => setInput(e.target.value)}
+            onChange={(e) => handleInput(e.target.value)}
           />
           <Button
             className="rounded-0 bg-success border-0"
