@@ -17,7 +17,7 @@ function App() {
   const [userInput, setUserInput] = useState('');
   const [timeLeft, setTimeLeft] = useState(0);
   const myInterval = useRef();
-  /**
+  /** this function stops the timer by clearing an existing interval
    * @returns {null}.
    */
   function stopTimer() {
@@ -25,7 +25,8 @@ function App() {
       clearInterval(myInterval.current);
     }
   }
-  /**
+  /** this function resumes the timer by adding an interval, which subtracts 1
+   * from previous timeLeft value each second
    * @returns {null}.
    */
   function resumeTimer() {
@@ -33,7 +34,7 @@ function App() {
       setTimeLeft((curValue) => curValue - 1);
     }, 1000);
   }
-  /**
+  /** this function starts the timer by setting timeLeft to equal userInput and calling resumeTimer
    * @returns {null}.
    */
   function startTimer() {
