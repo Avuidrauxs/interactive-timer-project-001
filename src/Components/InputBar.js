@@ -25,8 +25,8 @@ function InputBar() {
     }
     return true;
   }
-  /** function handling the click and setting the current
-   * value of user input as userInput in global context
+  /** function handling the click and starting the timer
+   * with a value equal to current input
    * @returns {null}. */
   function submit() {
     const isValid = validate(input);
