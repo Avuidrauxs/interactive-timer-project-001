@@ -15,6 +15,7 @@ import TimerContext from './Contexts/TimerContext';
  */
 function App() {
   const [timeLeft, setTimeLeft] = useState(0);
+  const [isTimerActive, setIsTimerActive] = useState(false);
   const myInterval = useRef();
   /** this function stops the timer by clearing an existing interval
    * @returns {null}.
@@ -22,6 +23,7 @@ function App() {
   function stopTimer() {
     if (myInterval.current !== undefined) {
       clearInterval(myInterval.current);
+      setIsTimerActive(false);
     }
   }
   /** this function resumes the timer by adding an interval, which subtracts 1
@@ -32,6 +34,7 @@ function App() {
     myInterval.current = setInterval(() => {
       setTimeLeft((curValue) => curValue - 1);
     }, 1000);
+    setIsTimerActive(true);
   }
   /** this function starts stops the current timer and starts a new one
    * @param {num} input defines new timer's starting value
@@ -50,6 +53,7 @@ function App() {
   return (
     <TimerContext.Provider value={{
       timeLeft,
+      isTimerActive,
       startTimer,
       resumeTimer,
       stopTimer
