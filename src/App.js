@@ -38,7 +38,7 @@ function App() {
    * @returns {null}.
    */
   function startTimer() {
-    setTimeLeft(userInput);
+    setTimeLeft(userInput * 60);
     resumeTimer();
   }
   useEffect(() => {
@@ -77,7 +77,7 @@ function App() {
           <Col xs={12} md={10}>
             <Clock />
           </Col>
-          <Col xs={2} md={2} className="d-flex m-auto justify-content-center p-3 p-md-2 p-xl-3">
+          <Col xs={2} md={2} className="d-flex m-auto justify-content-center p-3 p-xl-4">
             <PausePlayButton />
           </Col>
         </Row>
