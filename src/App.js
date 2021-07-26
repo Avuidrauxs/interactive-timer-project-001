@@ -1,7 +1,7 @@
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import InputBar from './Components/InputBar';
 import SpeedBar from './Components/SpeedBar';
 import Clock from './Components/Clock';
