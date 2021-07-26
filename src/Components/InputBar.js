@@ -10,7 +10,7 @@ import TimerContext from '../Contexts/TimerContext';
 function InputBar() {
   const [input, setInput] = useState('');
   const [showWarning, setShowWarning] = useState(false);
-  const { setUserInput } = useContext(TimerContext);
+  const { startTimer } = useContext(TimerContext);
   /** function validating the user input.
    * @param {string} value represents user input
    * @returns {boolean} informing if the input is valid
@@ -32,7 +32,7 @@ function InputBar() {
     const isValid = validate(input);
     if (isValid) {
       setShowWarning(false);
-      setUserInput(input);
+      startTimer(input);
     } else {
       setShowWarning(true);
     }

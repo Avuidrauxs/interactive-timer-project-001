@@ -14,7 +14,6 @@ import TimerContext from './Contexts/TimerContext';
  * @returns {Node} containing the app
  */
 function App() {
-  const [userInput, setUserInput] = useState('');
   const [timeLeft, setTimeLeft] = useState(0);
   const myInterval = useRef();
   /** this function stops the timer by clearing an existing interval
@@ -34,29 +33,22 @@ function App() {
       setTimeLeft((curValue) => curValue - 1);
     }, 1000);
   }
-  /** this function starts the timer by setting timeLeft to equal userInput and calling resumeTimer
+  /** this function starts stops the current timer and starts a new one
+   * @param {num} input defines new timer's starting value
    * @returns {null}.
    */
-  function startTimer() {
-    setTimeLeft(userInput * 60);
+  function startTimer(input) {
+    stopTimer();
+    setTimeLeft(input * 60);
     resumeTimer();
   }
   useEffect(() => {
-    if (userInput !== '') {
-      stopTimer();
-      startTimer();
-    }
-  }, [userInput]);
-  useEffect(() => {
-    // eslint-disable-next-line no-unused-expressions
     if (timeLeft === 0) {
       stopTimer();
     }
   }, [timeLeft]);
   return (
     <TimerContext.Provider value={{
-      userInput,
-      setUserInput,
       timeLeft,
       startTimer,
       resumeTimer,
