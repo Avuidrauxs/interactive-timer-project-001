@@ -15,6 +15,7 @@ import TimerContext from './Contexts/TimerContext';
  */
 function App() {
   const [timeLeft, setTimeLeft] = useState(0);
+  const [initialTime, setInitialTime] = useState(0);
   const [isTimerActive, setIsTimerActive] = useState(false);
   const [timerSpeed, setTimerSpeed] = useState(1);
   const myInterval = useRef();
@@ -42,8 +43,10 @@ function App() {
    * @returns {null}.
    */
   function startTimer(input) {
+    const inputInMinutes = input * 60;
     stopTimer();
-    setTimeLeft(input * 60);
+    setInitialTime(inputInMinutes);
+    setTimeLeft(inputInMinutes);
     resumeTimer();
   }
   useEffect(() => {
@@ -59,13 +62,14 @@ function App() {
   }, [timerSpeed]);
   return (
     <TimerContext.Provider value={{
+      initialTime,
       timeLeft,
       isTimerActive,
       startTimer,
       resumeTimer,
       stopTimer,
       timerSpeed,
-      setTimerSpeed
+      setTimerSpeed,
     }}>
       <Col xs={11} md={6} className="m-auto my-4 my-xl-5">
         <Row>
@@ -75,7 +79,7 @@ function App() {
         </Row>
         <Row className="mt-4">
           <Col xs={12} md={10}>
-            <ClockComment text="More than halfway there!"/>
+            <ClockComment />
           </Col>
         </Row>
         <Row>
