@@ -16,6 +16,7 @@ import TimerContext from './Contexts/TimerContext';
 function App() {
   const [timeLeft, setTimeLeft] = useState(0);
   const [isTimerActive, setIsTimerActive] = useState(false);
+  const [timerSpeed, setTimerSpeed] = useState(1);
   const myInterval = useRef();
   /** this function stops the timer by clearing an existing interval
    * @returns {null}.
@@ -33,7 +34,7 @@ function App() {
   function resumeTimer() {
     myInterval.current = setInterval(() => {
       setTimeLeft((curValue) => curValue - 1);
-    }, 1000);
+    }, (1000 / timerSpeed));
     setIsTimerActive(true);
   }
   /** this function starts stops the current timer and starts a new one
@@ -50,13 +51,21 @@ function App() {
       stopTimer();
     }
   }, [timeLeft]);
+  useEffect(() => {
+    if (timeLeft > 0) {
+      stopTimer();
+      resumeTimer();
+    }
+  }, [timerSpeed]);
   return (
     <TimerContext.Provider value={{
       timeLeft,
       isTimerActive,
       startTimer,
       resumeTimer,
-      stopTimer
+      stopTimer,
+      timerSpeed,
+      setTimerSpeed
     }}>
       <Col xs={11} md={6} className="m-auto my-4 my-xl-5">
         <Row>
