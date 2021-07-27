@@ -60,7 +60,7 @@ function InputBar() {
           <Form.Control
             className="mx-2 rounded-0 border-2 border-secondary"
             type="input"
-            placeholder="0-1380"
+            placeholder="0-1380 minutes"
             value={input}
             onChange={(e) => handleInput(e.target.value)}
           />
