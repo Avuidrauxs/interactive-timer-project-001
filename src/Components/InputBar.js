@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 // eslint-disable-next-line object-curly-newline
 import { Form, Row, Button, Alert } from 'react-bootstrap';
 import TimerContext from '../Contexts/TimerContext';
@@ -9,36 +9,35 @@ import TimerContext from '../Contexts/TimerContext';
  */
 function InputBar() {
   const [input, setInput] = useState('');
-  const [showWarning, setShowWarning] = useState(false);
+  const [isValid, setIsValid] = useState(false);
   const { startTimer } = useContext(TimerContext);
-  /** function validating the user input.
+  /** function validating the user input and updating the isValid stateful value accordingly.
    * @param {string} value represents user input
-   * @returns {boolean} informing if the input is valid
+   * @returns {null}.
   */
   function validate(value) {
     if (value === '') {
-      return false;
+      setIsValid(false);
+      return;
     }
     const numValue = parseInt(value, 10);
     if (Number.isNaN(numValue) || numValue < 0 || numValue > 1380) {
-      return false;
+      setIsValid(false);
+      return;
     }
-    return true;
+    setIsValid(true);
   }
   /** function handling the click and starting the timer
    * with a value equal to current input
    * @returns {null}. */
   function submit() {
-    const isValid = validate(input);
     if (isValid) {
-      setShowWarning(false);
       startTimer(input);
-    } else {
-      setShowWarning(true);
     }
   }
-  /** function handling the live input. It will set showWarning to false whenever input changes to ''
-   * and block user from inputting anything else than numbers
+  /** function handling the live input. If user tries to input anything else than a digit,
+   * the input stateful value, which controls the input field, is not set and therefore user
+   * is effectively prevented from inputting characters other than digits.
    * @returns {null}.
    * @param {string} userInput is a value that user wants to set in the input field.
    */
@@ -47,11 +46,12 @@ function InputBar() {
     if (re.test(userInput)) {
       return;
     }
-    if (userInput === '') {
-      setShowWarning(false);
-    }
     setInput(userInput);
   }
+  // check if input is valid each time it's changed.
+  useEffect(() => {
+    validate(input);
+  }, [input]);
   return (
     <>
       <Row xs={1} className="justify-content-center m-auto">
@@ -67,12 +67,13 @@ function InputBar() {
           <Button
             className="rounded-0 bg-success border-0"
             onClick={submit}
+            disabled={!isValid}
           >
             START
           </Button>
         </Form>
       </Row>
-      {showWarning
+      {!isValid && input !== ''
         && <Alert variant="warning" className="mt-2">
           Your input is invalid. Input field must not be empty and you can only input numbers between 0 and 1380 (1380 minutes = 23 hours).
         </Alert>
